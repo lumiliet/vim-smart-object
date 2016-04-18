@@ -27,7 +27,6 @@ function! SmartObject(action, object)
         let endPosition = GetPosition()
 
         if PositionEquals(startPosition, endPosition)
-            echo 'yeash'
             return
         endif
     endif
@@ -51,7 +50,7 @@ function! AddMapping(action, opening, closing)
     execute "nnore <silent> " . a:action . "a" . a:closing . " :call SmartObject('" . a:action . "', 'a" . a:opening . "')<CR>"
 endfunction
 
-let s:pairs = [ ['(', ')'], ['[', ']'], ['{', '}'] ]
+let s:pairs = [ ['(', ')'], ['[', ']'] ]
 let s:actions = ['c','d']
 
 function! AddMappings()
