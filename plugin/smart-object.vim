@@ -1,9 +1,20 @@
 
-function! SmartObject(action, object)
+function! IsObject(object)
+    let registerBackup = @u
     let @u=''
     silent execute 'normal "uy' . a:object
-    if @u == ''
-        execute 'normal! '. 'f' . a:object[1]
+    let isRegisterEmpty = @u == ''
+    let @u = registerBackup
+    return !isRegisterEmpty
+endfunction
+
+function! JumpToObject(object)
+    execute 'normal! '. 'f' . a:object[1]
+endfunction
+
+function! SmartObject(action, object)
+    if !IsObject(a:object)
+        call JumpToObject(a:object)
     endif
 
     execute 'normal! ' . a:action . a:object
@@ -12,8 +23,6 @@ function! SmartObject(action, object)
         startinsert
     endif
 endfunction
-
-call SmartObject('d', "i(")
 
 
 
