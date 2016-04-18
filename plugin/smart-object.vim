@@ -1,7 +1,8 @@
 
 function! SmartObject(action, object)
-    let line = getline('.')[0:col('.') - 1]
-    if line !~ a:object[1]
+    let @u=''
+    silent execute 'normal "uy' . a:object
+    if @u == ''
         execute 'normal! '. 'f' . a:object[1]
     endif
 
@@ -11,6 +12,9 @@ function! SmartObject(action, object)
         startinsert
     endif
 endfunction
+
+call SmartObject('d', "i(")
+
 
 
 nnore <silent> ci( :call SmartObject('c', "i(")<CR>
