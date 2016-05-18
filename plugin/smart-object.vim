@@ -49,8 +49,25 @@ function! s:AddMapping(action, opening, closing)
     execute "nnore <silent> " . a:action . "a" . a:closing . " :call SmartObject('" . a:action . "', 'a" . a:opening . "')<CR>"
 endfunction
 
-let s:pairs = [ ['(', ')'], ['[', ']'], ['{', '}'] ]
-let s:actions = ['c','d','y']
+function! s:InitializaSettings()
+    if !exists('g:smart_object_commands')
+        let g:smart_object_commands = 'c,d,y'
+    endif
+
+    if !exists('g:smart_object_blocks')
+        let g:smart_object_blocks = '(),[],{}'
+    endif
+
+    let s:actions = split(g:smart_object_commands, ',')
+
+    let blocks = split(g:smart_object_blocks, ',')
+    let s:pairs = []
+    for i in range(0, len(blocks) - 1)
+        call add(s:pairs, blocks[i])
+    endfor
+endfunction
+
+call s:InitializaSettings()
 
 function! s:AddMappings()
     for action in s:actions
