@@ -11,7 +11,7 @@ function foo(bar, soo) {
 }
 ```
 
-Take this very useful snippet. With the cursor on the first line you can do two neat things. `ci(` will empty the arguments so you can write others. `ci{` deletes the function body and lets you write a new one.
+Take this very useful snippet. With the cursor on the beginning of the first line you can do two neat things. `ci(` will empty the arguments so you can write others. `ci{` deletes the function body and lets you write a new one.
 
 
 ## Support
