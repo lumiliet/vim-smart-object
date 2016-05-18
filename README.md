@@ -1,3 +1,20 @@
 # vim-smart-object
 
-Makes some text-objects smarter when working with `d` and `c`. Specifically: (), {} and []. If the cursor is not inside a block, the cursor will now jump to closest opening delimiter and then do the action. Saves like 1 second.
+Usually if you type `ci{` while not in a `{}` block nothing will happen. This plugin makes Vim look for a block on the same line before giving up.
+
+
+## Examples
+
+```JavaScript
+function foo(bar, soo) {
+    return;
+}
+```
+
+Take this very useful snippet. With the cursor on the first line you can do two neat things. `ci(` will empty the arguments so you can write others. `ci{` deletes the function body and lets you write a new one.
+
+
+## Support
+
+Supported commands: `c`,`d` and `y`.
+Supported block types: `{}`, `()`, `[]`.
