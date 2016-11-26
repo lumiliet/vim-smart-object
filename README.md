@@ -29,8 +29,3 @@ Set the block types to use. Default is `{},(),[]`.
 ```shell
 let g:smart_object_blocks = '(),[]'
 ```
-
-
-## Note
-
-This plugin only intervenes when not currently in a block. So if you try to change a function body inside a container `{}` which is normal in some languages with classes, `ci{` will empty the entire class, not just the function body. This is how Vim usually behaves. To change the function body you will have to type `f{ci{` like before.
